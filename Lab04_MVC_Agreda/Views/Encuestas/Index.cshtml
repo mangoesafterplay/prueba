@@ -1,0 +1,72 @@
+﻿@model Lab04_MVC_Agreda.Models.clsEncuestas
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <h4>Encuesta</h4>
+    <br />
+    <form id="form1" method="post">
+        <div class="auto-style1">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.titulo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.titulo)
+                </dd>
+            </dl>
+            <br />
+            <table class="table table-bordered table-responsive table-hover table-striped">
+                <tr>
+                    <th>Alternativa</th>
+                    <th>Votos</th>
+                    <th>Porcentaje</th>
+                    <th>Gráfico</th>
+                </tr>
+
+                @for (int i = 0; i < Model.alternativa.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            <input type="radio" name="index" value="@(i)" />
+                            @(Model.alternativa[i].titulo)
+                        </td>
+                        <td>
+                            @(Model.alternativa[i].cantidad)
+                        </td>
+                        <td>
+                            @(Model.alternativa[i].porcentaje)%
+                        </td>
+                        <td>
+                            <progress value="@(Model.alternativa[i].porcentaje)"
+                                      max="100">
+                            </progress>
+                        </td>
+                    </tr>
+                }
+
+                <tr>
+                    <td>Total de Votos: </td>
+                    <td>@Html.DisplayFor(model => model.cantidadTotal)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Votar" class="btn btn-primary" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+

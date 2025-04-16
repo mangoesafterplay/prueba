@@ -1,0 +1,159 @@
+﻿@model Lab04_MVC_Agreda.Models.clsEncuesta
+
+@{
+    ViewBag.Title = "Realizar Encuesta";
+}
+
+<div class="text-center">
+    <h2>Encuesta de Cursos</h2>
+    <br />
+    @using (Html.BeginForm("RealizarEncuesta", "Encuesta", FormMethod.Post))
+            {
+                <p>
+                    Seleccione el @Request["Curso"]
+                </p>
+
+                <table class="table" style="width: 80%; margin: 1em auto;">
+                    <tr>
+                        <td class="auto-style4">CURSOS</td>
+                        <td class="auto-style4">VOTOS</td>
+                        <td class="auto-style4">PORCENTAJE</td>
+                        <td class="auto-style4">GRAFICO</td>
+                    </tr>
+
+                    <tr>
+                        <td class="auto-style5">
+                            <p>
+                                <label>
+                                    @Html.RadioButton("Curso", "Curso 1")@ViewBag.Alternativa1
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["cv1"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["porcentajeC1"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style1">
+                            <progress class="progress is primary"
+                                      id="pb1"
+                                      value=@Session["vp1"] max="100.00">
+                            </progress>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="auto-style5">
+                            <p>
+                                <label>
+                                    @Html.RadioButton("Curso", "Curso 2")@ViewBag.Alternativa2
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["cv2"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["porcentajeC2"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style1">
+                            <progress class="progress is primary"
+                                      id="pb1"
+                                      value=@Session["vp2"] max="100.00">
+                            </progress>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="auto-style5">
+                            <p>
+                                <label>
+                                    @Html.RadioButton("Curso", "Curso 3")@ViewBag.Alternativa3
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["cv3"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["porcentajeC3"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style1">
+                            <progress class="progress is primary"
+                                      id="pb1"
+                                      value=@Session["vp3"] max="100.00">
+                            </progress>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="auto-style5">
+                            <p>
+                                <label>
+                                    @Html.RadioButton("Curso", "Curso 4")@ViewBag.Alternativa4
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["cv4"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style2">
+                            <p>
+                                <label>
+                                    @Session["porcentajeC4"]
+                                </label>
+                            </p>
+                        </td>
+                        <td class="auto-style1">
+                            <progress class="progress is primary"
+                                      id="pb1"
+                                      value=@Session["vp4"] max="100.00">
+                            </progress>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Total: </td>
+                        <td>@Session["totalVotos"]</td>
+                        <td>@Session["totalPorcentaje"]</td>
+                        <td>&nbsp;</td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><button class="btn btn-primary">Votar</button></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            }
+</div>
